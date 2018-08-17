@@ -2,11 +2,9 @@
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, func, DATE, ForeignKey,Enum
+from sqlalchemy import Column, Integer, String, func, DATE, ForeignKey, Enum
 from sqlalchemy.orm import sessionmaker, relationship
-from sqlalchemy_utils import ChoiceType,PasswordType
-
-
+from sqlalchemy_utils import ChoiceType, PasswordType
 
 Base = declarative_base()
 
@@ -26,18 +24,19 @@ class HostGroup(Base):
     __tablename__ = 'host_group'
     id = Column(Integer, primary_key=True)
     name = Column(String(64), unique=True)
+
     def __repr__(self):
         return self.name
 
 
 class RemoteUser(Base):
-    __tablename__='remote_user'
-    id=Column(Integer,primary_key=True)
-    auth_type=Column(Enum(0,1))
-    username=Column(String(32))
-    password=Column(String())
+    __tablename__ = 'remote_user'
+    id = Column(Integer, primary_key=True)
+    auth_type = Column(Enum(0, 1))
+    username = Column(String(32))
+    password = Column(String())
 
-
+   
 class UserProfile(Base):
     pass
 
